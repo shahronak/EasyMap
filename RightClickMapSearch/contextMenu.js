@@ -44,8 +44,6 @@ chrome.runtime.onInstalled.addListener(function() {
 	var context = "selection";
 	var id = chrome.contextMenus.create({"title": title, "contexts":[context], "id": "context" + context});
 	console.log("'" + context + "' item:" + id);
-	localStorage["Conestoga Mall"] = "550+King+Street+North+Waterloo,+ON";
-	localStorage["Starlight"] = "47+King+Street+North+Waterloo,+ON";
 	for (var i=0; i<localStorage.length;i++) {
       title = localStorage.key(i);
       id = chrome.contextMenus.create({"title": "From "+title, "contexts":[context], "id": title});
