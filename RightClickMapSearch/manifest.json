@@ -1,0 +1,11 @@
+{
+  "name": "Open Google Map Selection",
+  "description": "Searches Google Maps based on selection",
+  "version": "1.0",
+  "permissions": ["contextMenus", "tabs"],
+  "background": {
+    "persistent": false,
+    "scripts": ["contextMenu.js"]
+  },
+  "manifest_version": 2
+}
