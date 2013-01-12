@@ -8,8 +8,8 @@ function loadProfiles(){
 	for(var key in localStorage){
 		list.innerHTML = list.innerHTML + 
 			"<tr>" +
-				"<td>" +
-					"<img src='deleteProfile.png' id='" + key + "'>" +  "<b>" + key + "</b>" +  "<br>" +
+				"<td width='270'>" +
+					"<b>" + key + "</b>" + "&nbsp;&nbsp;&nbsp;" +  "<img src='deleteProfile.png' align='right' id='" + key + "'>" +  "<br>" +
 					localStorage[key] +
 				"</td>" +
 			"</tr>";

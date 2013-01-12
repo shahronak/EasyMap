@@ -24,3 +24,10 @@ label {
 	margin-bottom: 3px;
 	clear: both;
 }
+td {
+	font-size: 14px;
+	text-transform: inherit;
+	display: block;
+	margin-bottom: 3px;
+	clear: both;
+}
