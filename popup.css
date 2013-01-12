@@ -5,11 +5,16 @@
  */
 
 body {
-  margin: 0px;
-  padding: 0px;
+	width: 300px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.lbl {
+	width: 160px;
 }
 
 #map {
-  width: 512px;
-  height: 512px;
+	width: 512px;
+	height: 512px;
 }

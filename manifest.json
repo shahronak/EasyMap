@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Easily get directions to any address on the page!",
   "icons": { "128": "icon.png" },
-  "background": { "scripts": ["background.js"] },
+  "background": { "scripts": ["contextMenu.js"] },
   "content_scripts": [
     { 	"matches": ["http://*/*"], 
 		"js": ["popup.js"],
@@ -12,6 +12,8 @@
   ],
   "permissions": [
     "tabs",
+	"contextMenus",
+	"geolocation",
     "https://maps.google.com/*",
     "https://maps.googleapis.com/*"
   ],
