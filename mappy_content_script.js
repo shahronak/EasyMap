@@ -12,6 +12,7 @@ if (window == top) {
 // Search the text nodes for a US-style mailing address.
 // Return null if none is found.
 var findAddress = function() {
+  alert("find address script is running now");
   var found;
   var re = /(\d+\s+[':.,\s\w]*,\s*[A-Za-z]+\s*\d{5}(-\d{4})?)/m;
   var node = document.body;
