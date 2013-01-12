@@ -45,7 +45,7 @@ function addProfile(){
 	}else if(req_profile_addr == ''){
 		alert("Please enter a profile address");
 	}else{
-		localStorage[key] = req_profile_addr;
+		localStorage[req_profile_name] = req_profile_addr;
 		document.getElementById("profileName").value = '';
 		document.getElementById("profileAddr").value = '';
 		loadProfiles();
