@@ -2,7 +2,7 @@
   "name": "Open Google Map Selection",
   "description": "Searches Google Maps based on selection",
   "version": "1.0",
-  "permissions": ["contextMenus", "tabs"],
+  "permissions": ["contextMenus", "tabs", "geolocation"],
   "background": {
     "persistent": false,
     "scripts": ["contextMenu.js"]
