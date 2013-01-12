@@ -1,22 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>EasyMap Profile Manager</title>
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
-    <script src="popup.js"></script>
-	<link href="popup.css" rel="stylesheet" type="text/css">
+	<script src="popup.js"></script>
+	<script src="jquery.uniform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+      $(function(){
+        $("input, textarea, select, button").uniform();
+      });
+    </script>
+	<link rel="stylesheet" href="popup.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="uniform.default.css" type="text/css" media="screen">
   </head>
   <body>
-		<strong>Insert New Address</strong><br>
-		<div class="lbl">Profile Name</div><input type="text" id="profileName" /> <br>
-		<div class="lbl">Profile Address</div><input type="text" id="profileAddr" /><br>
-		<button>Add Profile</button>
-		<table id="profileList"></table>
+    <h1>Insert New Address</h1>
+    <form>
+      <ul>
+        <li><label>Profile Name:</label><input type="text" size="40" id="profileName"/></li>
+		<li><label>Profile Address:</label><input type="text" size="40" id="profileAddr"/></li>
+        <li>
+          <button>Add Profile</button>
+        </li>
+		<li><table id="profileList"></table></li>
+      </ul>
+    </form>
   </body>
 </html>
-
