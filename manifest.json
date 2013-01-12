@@ -12,6 +12,7 @@
   ],
   "permissions": [
     "tabs",
+	"storage",
     "https://maps.google.com/*",
     "https://maps.googleapis.com/*"
   ],
