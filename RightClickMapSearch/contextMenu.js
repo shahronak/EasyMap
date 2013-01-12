@@ -13,14 +13,21 @@ function openMapTab(info, tab) {
   if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(
 	  function(position) {
-	    var dest;
-	    var curLocation = position.coords.latitude+",+"+position.coords.longitude;
-		if (id == "contextselection") {
-		  dest = selection;
-		} else {
-		  dest = localStorage[id];
+	    var source = position.coords.latitude+",+"+position.coords.longitude;
+		if (id != "contextselection") {
+		  source = localStorage[id];
 		}
-		var URL="http://maps.google.com/?saddr=" +curLocation+"&daddr="+dest;
+		var URL="http://maps.google.com/?saddr=" +source+"&daddr="+selection;
+		chrome.tabs.create({'url': URL}, function(tab) {
+		  // Tab opened.
+		});
+	  },
+	  function(error) {
+	    var source = "";
+		if (id != "contextselection") {
+		  source = localStorage[id];
+		}
+		var URL="http://maps.google.com/?saddr=" +source+"&daddr="+selection;
 		chrome.tabs.create({'url': URL}, function(tab) {
 		  // Tab opened.
 		});
@@ -37,8 +44,8 @@ chrome.runtime.onInstalled.addListener(function() {
 	var context = "selection";
 	var id = chrome.contextMenus.create({"title": title, "contexts":[context], "id": "context" + context});
 	console.log("'" + context + "' item:" + id);
-	localStorage["test1"] = "140+Westmount+Rd.+N,+Waterloo,+ON";
-	localStorage["test2"] = "98+King+St.+N,+Waterloo,+ON";
+	localStorage["Conestoga Mall"] = "550+King+Street+North+Waterloo,+ON";
+	localStorage["Starlight"] = "47+King+Street+North+Waterloo,+ON";
 	for (var i=0; i<localStorage.length;i++) {
       title = localStorage.key(i);
       id = chrome.contextMenus.create({"title": "From "+title, "contexts":[context], "id": title});
