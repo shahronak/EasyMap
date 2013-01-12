@@ -51,13 +51,66 @@ function addProfile(){
 		loadProfiles();
 		attachEvents();
 	}
+	updateContextMenu();
 }
 
 function removeProfile(key){
 	localStorage.removeItem(key);
 	var parent = document.getElementById(key).parentNode.parentNode;
 	parent.parentNode.removeChild(parent);
+	updateContextMenu();
 }
+
+function openMapTab(info, tab) {
+  var selection = info.selectionText;
+  var id = info.menuItemId; //this will be equivalent to the key in localStorage
+  selection = selection.replace("#","");
+  console.log("item " + info.menuItemId + " was clicked");
+  console.log("info: " + JSON.stringify(info));
+  console.log("tab: " + JSON.stringify(tab));
+  if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(
+	  function(position) {
+	    var source = position.coords.latitude+",+"+position.coords.longitude;
+		if (id != "contextselection") {
+		  source = localStorage[id];
+		}
+		var URL="http://maps.google.com/?saddr=" +source+"&daddr="+selection;
+		chrome.tabs.create({'url': URL}, function(tab) {
+		  // Tab opened.
+		});
+	  },
+	  function(error) {
+	    var source = "";
+		if (id != "contextselection") {
+		  source = localStorage[id];
+		}
+		var URL="http://maps.google.com/?saddr=" +source+"&daddr="+selection;
+		chrome.tabs.create({'url': URL}, function(tab) {
+		  // Tab opened.
+		});
+	  }
+	)
+  }
+}
+
+function updateContextMenu() {
+  chrome.contextMenus.removeAll();
+  var title = "From Current Location";
+  var context = "selection";
+  var id = chrome.contextMenus.create({"title": title, "contexts":[context], "id": "context" + context});
+  console.log("'" + context + "' item:" + id);
+  for (var i=0; i<localStorage.length;i++) {
+    title = localStorage.key(i);
+    id = chrome.contextMenus.create({"title": "From "+title, "contexts":[context], "id": title});
+    console.log("'" + context + "' item:" + id);
+  }
+}
+
+chrome.contextMenus.onClicked.addListener(openMapTab);
+
+// Create one test item for each context type.
+chrome.runtime.onInstalled.addListener(updateContextMenu);
 	
 document.addEventListener('DOMContentLoaded', function () {
 	document.querySelector('button').addEventListener('click', addProfile);

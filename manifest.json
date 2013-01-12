@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Easily get directions to any address on the page!",
   "icons": { "128": "icon.png" },
-  "background": { "scripts": ["contextMenu.js"] },
+  "background": { "scripts": ["popup.js"] },
   "content_scripts": [
     { 	"matches": ["http://*/*"], 
 		"js": ["popup.js"],
