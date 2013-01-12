@@ -8,6 +8,7 @@
  */
 var KEY_PREFIX = 'easy_map_user.';
 
+updateContextMenu()
 
 function loadProfiles(){
 	var list = document.getElementById("profileList");
